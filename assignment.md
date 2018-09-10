@@ -7,6 +7,7 @@
 
 | Date       | Homework        | Project                                  | HW Due     | Proj Due                                 |
 | :--------- | :-------------- | :--------------------------------------- | :--------- | :--------------------------------------- |
+| 9.10, Mon   | [H2-1](#h2-1)       | None                                     | 9.17, Mon  | -                                        |
 | 9.6, Tue   | [H1](#h1)       | None                                     | 9.9, Sun  | -                                        |
 | 9.3, Mon   | [H0](#h0)       | None                                     | 9.6, Thu  | -                                        |
 
@@ -27,7 +28,7 @@
 
 2. 在你安装的环境下，练习使用GCC/Clang，结合使用-E（预处理器，结果大致阅读了解，在作业中指出做了哪些类型的变换）、-S、-c、-o、-m32/64参数，观察程序编译后输出的代码。请：
 	- 在`HW/H1/c`中添加你的源程序、`Makefile`、shell脚本等
-	- 在`HW/H1/c`中添加`answer.md`中说明该目录下的文件及子目录和使用方式
+	- 在`HW/H1/c`中添加`readme.md`中说明该目录下的文件及子目录和使用方式
 	- 在`HW/H1/answer.md`中回答本题，指出你的源代码在`HW/H1`中的位置、不同编译选项下输出的汇编码，并对汇编码加注释
 	  - **注释**至少要说明不同汇编命令的含义、源程序中的变量以及中间结果在汇编码中的对应
 
@@ -39,6 +40,11 @@
 
 
 **注意**
+
 - 临时文件和编译生成的目标文件、可执行程序不要提交到库中。
 - `.md`是现在最常用的简单样式说明用途的文本格式之一Markdown的后缀名，你们应大致了解Markdown的排版方式，以合理的形式展现代码。关于Markdown的使用可以参考[GitHub Guide: Mastering Markdown](https://guides.github.com/features/mastering-markdown)，你也可以自行查找一些资料来了解这一Markup Language的使用方式。
 - 自行查找 Makefile 文件的编写，也可以参考 [bison-examples](http://staff.ustc.edu.cn/~yuzhang/compiler/proj/bison-examples.zip) 中的 Makefile
+- 评价标准见 [github](https://github.com/ustc-compiler/2018fall/blob/master/hwevalstd.xlsx)
+
+### H2-1
+Book 2.3\(c\), 2.4\(c\)\(e\), 2.7\(c\) （注: 手工构造NFA和DFA, 用算法将NFA变换成DFA，再构造最简的DFA）
