@@ -7,8 +7,9 @@
 
 | Date       | Homework        | Project                                  | HW Due     | Proj Due                                 |
 | :--------- | :-------------- | :--------------------------------------- | :--------- | :--------------------------------------- |
+| 9.13, Thu   | [H2-2](#h2-2)       | [Environment](https://clarazhang.gitbooks.io/compiler-f2018/content/environment.html), [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/projects/parser.html),  | 9.17, Mon  | -                                        |
 | 9.10, Mon   | [H2-1](#h2-1)       | None                                     | 9.17, Mon  | -                                        |
-| 9.6, Tue   | [H1](#h1)       | None                                     | 9.9, Sun  | -                                        |
+| 9.6, Thu   | [H1](#h1)       | None                                     | 9.9, Sun  | -                                        |
 | 9.3, Mon   | [H0](#h0)       | None                                     | 9.6, Thu  | -                                        |
 
 ## 习题课课件
@@ -48,3 +49,6 @@
 
 ### H2-1
 Book 2.3\(c\), 2.4\(c\)\(e\), 2.7\(c\) （注: 手工构造NFA和DFA, 用算法将NFA变换成DFA，再构造最简的DFA）
+
+### H2-2
+Book 3.2
