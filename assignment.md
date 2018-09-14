@@ -5,12 +5,12 @@
 对纸质提交的作业，截止时间统一为所述日期课前。
 
 
-| Date       | Homework        | Project                                  | HW Due     | Proj Due                                 |
-| :--------- | :-------------- | :--------------------------------------- | :--------- | :--------------------------------------- |
-| 9.13, Thu   | [H2-2](#h2-2)       | [Environment](https://clarazhang.gitbooks.io/compiler-f2018/content/environment.html), [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/projects/parser.html),  | 9.17, Mon  | -                                        |
-| 9.10, Mon   | [H2-1](#h2-1)       | None                                     | 9.17, Mon  | -                                        |
-| 9.6, Thu   | [H1](#h1)       | None                                     | 9.9, Sun  | -                                        |
-| 9.3, Mon   | [H0](#h0)       | None                                     | 9.6, Thu  | -                                        |
+| Date      | Homework          | Project                                  | HW Due        | Proj Due |
+| :-------- | :---------------- | :--------------------------------------- | :------------ | :------- |
+| 9.13, Thu | ~~[H2-2](#h2-2)~~ | [Environment](https://clarazhang.gitbooks.io/compiler-f2018/content/environment.html), [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html), | ~~9.17, Mon~~ | -        |
+| 9.10, Mon | [H2-1](#h2-1)     | None                                     | 9.17, Mon     | -        |
+| 9.6, Thu  | [H1](#h1)         | None                                     | 9.9, Sun      | -        |
+| 9.3, Mon  | [H0](#h0)         | None                                     | 9.6, Thu      | -        |
 
 ## 习题课课件
 
@@ -28,16 +28,16 @@
 1. 安装一个具备完善GNU工具链的环境，如任意Linux发行版/Windows Subsystem for Linux/MacOS（至少你要一个brew）；
 
 2. 在你安装的环境下，练习使用GCC/Clang，结合使用-E（预处理器，结果大致阅读了解，在作业中指出做了哪些类型的变换）、-S、-c、-o、-m32/64参数，观察程序编译后输出的代码。请：
-	- 在`HW/H1/c`中添加你的源程序、`Makefile`、shell脚本等
-	- 在`HW/H1/c`中添加`readme.md`中说明该目录下的文件及子目录和使用方式
-	- 在`HW/H1/answer.md`中回答本题，指出你的源代码在`HW/H1`中的位置、不同编译选项下输出的汇编码，并对汇编码加注释
-	  - **注释**至少要说明不同汇编命令的含义、源程序中的变量以及中间结果在汇编码中的对应
+  - 在`HW/H1/c`中添加你的源程序、`Makefile`、shell脚本等
+  - 在`HW/H1/c`中添加`readme.md`中说明该目录下的文件及子目录和使用方式
+  - 在`HW/H1/answer.md`中回答本题，指出你的源代码在`HW/H1`中的位置、不同编译选项下输出的汇编码，并对汇编码加注释
+    - **注释**至少要说明不同汇编命令的含义、源程序中的变量以及中间结果在汇编码中的对应
 
 3. 根据[课件](http://staff.ustc.edu.cn/~yuzhang/compiler/2017f/lectures/lexicalAnalysis.pdf)第16页的NFA，手工编写能识别输入串中多个满足NFA的记号的词法分析程序，写出<==><、a<=b的识别过程。**注意**：非关系运算符识别输出为other。**高级要求**：能输出每个记号对应在字符流中的起止位置。请：
-	- 将源代码、`Makefile`、shell脚本等存档在在`HW/H1/lexer`目录中
-	- 在`HW/H1/lexer`中添加`readme.md`中说明该目录下的文件及子目录和使用方式（包括Building和Usage）
-	- 在`HW/H1/answer.md`中给出在做这一题的主要考虑、问题以及解答
-	- 关于**编程语言**，默认是C语言。希望学生在提交作业时不要把检查者当成专家，要提供脚本和说明，告诉检查者怎么快速编译运行你写的程序以及程序中的要点
+  - 将源代码、`Makefile`、shell脚本等存档在在`HW/H1/lexer`目录中
+  - 在`HW/H1/lexer`中添加`readme.md`中说明该目录下的文件及子目录和使用方式（包括Building和Usage）
+  - 在`HW/H1/answer.md`中给出在做这一题的主要考虑、问题以及解答
+  - 关于**编程语言**，默认是C语言。希望学生在提交作业时不要把检查者当成专家，要提供脚本和说明，告诉检查者怎么快速编译运行你写的程序以及程序中的要点
 
 
 **注意**
@@ -50,5 +50,5 @@
 ### H2-1
 Book 2.3\(c\), 2.4\(c\)\(e\), 2.7\(c\) （注: 手工构造NFA和DFA, 用算法将NFA变换成DFA，再构造最简的DFA）
 
-### H2-2
-Book 3.2
+### ~~H2-2~~
+~~Book 3.2~~
