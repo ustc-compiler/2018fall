@@ -7,6 +7,7 @@
 
 | Date      | Homework          | Project                                  | HW Due        | Proj Due |
 | :-------- | :---------------- | :--------------------------------------- | :------------ | :------- |
+| 9.20, Thu | [H3-2](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
 | 9.17, Mon | [H3-1](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
 | 9.13, Thu | ~~[H2-2](#h2-2)~~ | [Environment](https://clarazhang.gitbooks.io/compiler-f2018/content/environment.html) | ~~9.17, Mon~~ | -        |
 | 9.10, Mon | [H2-1](#h2-1)     | None                                     | 9.17, Mon     | -        |
@@ -56,3 +57,6 @@ Book 2.3\(c\), 2.4\(c\)\(e\), 2.7\(c\) （注: 手工构造NFA和DFA, 用算法�
 
 ### H3-1
 Book 3.2 
+
+### H3-2
+Book 3.4 3.6(d), (f)a的个数比b的个数多的串  3.8(1) 
