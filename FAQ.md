@@ -202,12 +202,12 @@ git@202.38.79.111's password:
 6.2.1 Lab1-1
 ``` text
 - <your repo>
-  | c1recognizer         复制自公共仓库的 c1recognizer 项目，请勿遗漏内容。
+  | c1recognizer              复制自公共仓库的 c1recognizer 项目，请勿遗漏内容。
     | cmake/
->>  | grammar/           修改其中的 C1Lexer.g4
+>>  | grammar/                修改其中的 C1Lexer.g4
     | include/c1recognizer/ 
     | src/
->>  | test/test_cases/   增加你的测试程序
->>  | doc/               增加文档描述实验中遇到的问题、分析和设计，文件名前缀为lab1-1
+>>  | test/test_cases/lexer/  增加你的测试程序
+>>  | doc/                    增加文档描述实验中遇到的问题、分析和设计，文件名前缀为lab1-1
     | 其他已有的文件
 ```
