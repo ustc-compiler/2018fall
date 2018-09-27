@@ -7,6 +7,7 @@
 
 | Date      | Homework          | Project                                  | HW Due        | Proj Due |
 | :-------- | :---------------- | :--------------------------------------- | :------------ | :------- |
+| 9.27, Thu | [H4-1](#h4-1) | | 10.8, Mon | -        |
 | 9.20, Thu | [H3-2](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
 | 9.17, Mon | [H3-1](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
 | 9.13, Thu | ~~[H2-2](#h2-2)~~ | [Environment](https://clarazhang.gitbooks.io/compiler-f2018/content/environment.html) | ~~9.17, Mon~~ | -        |
@@ -84,4 +85,13 @@ Book 3.4 3.6(d), (f)a的个数比b的个数多的串  3.8(a)
 3.8  (a) 消除习题3.1文法的左递归。
 注：习题3.1的文法如下
   S --> (L) | a     L --> L,S | S
+```
+
+### H4-1
+Book 3.12
+
+```
+3.12 下面的文法是否为 LL(1)文法?说明理由。
+S --> A B | P Q x	A --> x y	B --> b c
+P --> d P | \epsilon	Q --> a Q | \epsilon
 ```
