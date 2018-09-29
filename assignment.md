@@ -7,6 +7,7 @@
 
 | Date      | Homework          | Project                                  | HW Due        | Proj Due |
 | :-------- | :---------------- | :--------------------------------------- | :------------ | :------- |
+| 9.29, Sat | [H4-2](#h4-2) | [Lab1-2] | 10.8, Mon | 10.15, Mon |
 | 9.27, Thu | [H4-1](#h4-1) | | 10.8, Mon | -        |
 | 9.20, Thu | [H3-2](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
 | 9.17, Mon | [H3-1](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
@@ -93,5 +94,16 @@ Book 3.12
 ```
 3.12 下面的文法是否为 LL(1)文法?说明理由。
 S --> A B | P Q x	A --> x y	B --> b c
-P --> d P | \epsilon	Q --> a Q | \epsilon
+P --> d P | \epsilon	Q --> a Q | \epsilon
 ```
+
+### H4-2
+- Book 3.11
+
+```
+3.11 构造下面文法的 LL(1)分析表。
+S --> a B S | b A S | \epsilon
+A --> b A A | a
+B --> a B B | b
+```
+- 阅读并理解 [PL/0编译器](http://staff.ustc.edu.cn/~yuzhang/compiler/2012s/pl0.zip) ([PL/0说明文档](http://staff.ustc.edu.cn/~yuzhang/compiler/old_pl0project.pdf))， 叙述PL/0编译器中test函数的作用及它的三个参数的含义, 并举例说明第二个参数带来的好处和引起的问题。
