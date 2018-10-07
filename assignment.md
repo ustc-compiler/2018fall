@@ -7,7 +7,7 @@
 
 | Date      | Homework          | Project                                  | HW Due        | Proj Due |
 | :-------- | :---------------- | :--------------------------------------- | :------------ | :------- |
-| 9.29, Sat | [H4-2](#h4-2) | [Lab1-2] | 10.8, Mon | 10.15, Mon |
+| 9.29, Sat | [H4-2](#h4-2) | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 10.8, Mon | 10.15, Mon |
 | 9.27, Thu | [H4-1](#h4-1) | | 10.8, Mon | -        |
 | 9.20, Thu | [H3-2](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
 | 9.17, Mon | [H3-1](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
