@@ -7,7 +7,8 @@
 
 | Date      | Homework          | Project                                  | HW Due        | Proj Due |
 | :-------- | :---------------- | :--------------------------------------- | :------------ | :------- |
-| 10.8, Mon | [H5-1](#h5-1) | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) | 10.15, Mon | 10.15, Mon |
+| 10.11, Thu | [H5](#h5) | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) | 10.15, Mon | 10.15, Mon |
+| 10.8, Mon |  | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) |  | 10.15, Mon |
 | 9.29, Sat | [H4-2](#h4-2) | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) | 10.8, Mon | 10.15, Mon |
 | 9.27, Thu | [H4-1](#h4-1) | | 10.8, Mon | -        |
 | 9.20, Thu | [H3-2](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
@@ -109,7 +110,7 @@ B --> a B B | b
 ```
 - 阅读并理解 [PL/0编译器](http://staff.ustc.edu.cn/~yuzhang/compiler/2012s/pl0.zip) ([PL/0说明文档](http://staff.ustc.edu.cn/~yuzhang/compiler/old_pl0project.pdf))， 叙述PL/0编译器中test函数的作用及它的三个参数的含义, 并举例说明第二个参数带来的好处和引起的问题。
 
-### H5-1
+### H5
 Book 3.19  3.20
 
 ```
@@ -118,6 +119,7 @@ E --> E + T | T
 T --> T F | F
 F --> F | a | b
 (a) 为此文法构造SLR分析表。
+(b) 为此文法构造LALR分析表。
 
 3.20 证明下面的文法
 	S --> S A | A
