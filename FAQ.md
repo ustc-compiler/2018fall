@@ -54,6 +54,12 @@ git@202.38.79.111's password:
 > 记得先git pull.
 > 对于git的用法,务必参考你们git库下面的REAMDME-git!!!!!!!
 
+### new [10.10 updated.]
+
+1.4 不能git add *吗?为什么?
+> 如果没有配置gitignore的话,不建议这样做.
+> add * means add all files in the current directory, except for files, whose name begin with a dot. This is your shell functionality and Git only ever receives a list of files.
+
 <a id="2"/>
 
 ## 2. HW相关  
@@ -80,10 +86,18 @@ git@202.38.79.111's password:
 2.7 现在才给评价标准是不是晚了点?
 > 我们的评价标准是根据第一次大家的提交发现的问题总结的.目的是为了让大家在之后的lab/hw提交中知道标准.
 
-### new [9.21 updated.]
+### ~~new~~ [9.21 updated.]
 
 2.8 纸质作业交到哪里?什么时候交?
 > 纸质作业交到讲桌旁边的白色小桌子上,截止日期当天上课前交.
+
+### new [10.10 updated.]
+
+2.9 说语言是否正规是什么意思啊，什么叫正规?
+> "语言正规" -> "语言能用正规式表示"
+
+2.10 HW4-1作业\epsilon是空集的意思吗?
+> 是的
 
 <a id="3"/>
  
@@ -111,7 +125,7 @@ git@202.38.79.111's password:
 > CLASSPATH变量没有配置好,或者配置好了,但是没有更新Shell,可以source sh, 或者重新打开该shell.
 > 配置方式:把.jar文件本身的路径放到CLASSPATH里
 
-### new [9.21 updated.]
+### ~~new~~ [9.21 updated.]
 
 3.8 '\\'除了注释中需要考虑吗?
 > 不需要,我们在本次实验中只考虑注释中的'\\'.
@@ -143,8 +157,83 @@ git@202.38.79.111's password:
 
 3.17 像x=09这种这种问题，antlr会识别成0和9两个intconst，而不是报错，这种类型的错误是不是要留到语法的部分处理？
 > 是的.
-<a id="4"/>
 
+### new [10.10 updated.]
+
+3.18 请问token中只有IntConst一个整常数，那所以八进制十进制十六进制都共用这一个token吗？
+> 是的
+
+3.19 /*没闭合要怎么做啊，是直接识别成除号和乘号吗?
+> 是的.得等语法阶段处理.
+
+3.20 lab1-2要看的论文放在哪里?
+> [LL-star-PLDI11](http://www.antlr.org/papers/LL-star-PLDI11.pdf)
+> [Adaptive LL(*) Parsing](https://dl.acm.org/ft_gateway.cfm?id=2660202&ftid=1506866&dwn=1&CFID=17892232&CFTOKEN=9d3af2ee44ada410-60234D49-93D0-37F6-F814006BAFD6CD54)
+
+3.21 对于lab1-2的建议?
+> 建议先用比C1更小的语言来实验、阅读论文并回答问题。对于Antlr的特征及机制理解，尽量用能反映特征的最小语言来实验。要结合生成的parser源码来理解
+
+3.22 lab1-2可以引入其它的文法规则吗，比如C1Parser.g4原文件上没有的RelOp?
+> 可以
+
+3.23 GitCommit的评价标准是什么样的?
+> commit message不能太短，然后没有提交无用文件
+
+3.24 GitCommit的参考是怎样的呢?
+> 参考的某同学的版本如下:
+```
+Date:   Mon Sep 24 16:46:57 2018 +0800
+    [lab1-1] Add docs
+Date:   Mon Sep 24 15:36:05 2018 +0800
+    [lab1-1] Add many test cases
+Date:   Mon Sep 24 15:21:40 2018 +0800
+    [lab1-1] Fix LineComment (multi-line cases, v0.0.2)
+Date:   Mon Sep 24 14:03:41 2018 +0800
+    [lab1-1] Finish C1Lexer.g4 (v0.0.1)
+Date:   Mon Sep 24 13:59:51 2018 +0800
+    [lab1-1] Add lexer test scripts & simple test cases
+Date:   Mon Sep 24 13:49:09 2018 +0800
+    [lab1-1] Add c1recognizer skeleton
+```
+
+3.25 lab应该提交到哪个分支呢?
+> master分支,但是这个规定也有一部分是因为我们的设计给大家带来的不必要的麻烦.后面应该不会每次多弄一个reply的分支了
+
+3.26 E是不是0分鸭?
+> 不一定，等级和分数的关系，应该期末才会确定(当然不会告诉你们，目的是不让你们把精力花在一分两分的计较上)
+
+3.27 lab1-2的设计描述文件到底是放在doc下还是lab1-answer下?
+> doc下,lab1-answer下只放3个问题的回答和可能有的相应的图片文件
+
+3.28 tokens里面有notequal为什么测试要输出“!=”?
+> 直接是字符串匹配(只有一个alternative)的token都是直接输出字符串
+
+3.29 lab1-1的reply里的answer指的是?
+> answer指的是lab1-1*.md文档内容评价
+
+3.30 lab1-1的function部分的ABCDE等级划分标准是?
+> 共25个测试用例，正确率100%为A，正确率每降低25%降一档
+
+3.31 parser文件可以为了消除左递归改变生成规则吗，这样生成的树会不会不一样?
+> 可以,会,但是parser的测试采用人工测试.
+
+3.32 第二次评测1-1的提交是10/15吗?
+> 是的.使用10月15号22:00前最后一次提交的版本进行检测
+
+3.33 空在parser里怎么表达？
+> 可以用问号,可以用 什么都不写,比如 a : ; 或者 a : | IntConst;
+
+3.34 lab1-2的参考输出里面的EOF没有输出?
+> 看antlr4的[官方parser rules](https://github.com/ANTLR/antlr4/blob/master/doc/parser-rules.md)
+
+3.35 lab1-2的自动评测会要求语法树和预期输出一模一样吗?
+> 不会.我们用人工检查.
+
+3.36 话说markdown怎么在代码框中插入数学公式，$$好像不行?
+> lqx同学:[Markdown中插入数学公式的方法]
+(https://blog.csdn.net/xiahouzuoxin/article/details/26478179)
+
+<a id="4"/>
 ## 4. 其他系统/平台/环境等相关 
 
 4.1 64位机器没办法运行32位的程序怎么办?
@@ -165,15 +254,33 @@ git@202.38.79.111's password:
     Sum of buffers and cache
 ```
 
+### new [10.10 updated.]
+
+4.4 llvm-build可以删掉吗？竟然有44.1GB?
+> 其实可以在编译安装的时候选择release,并确定目标架构,这样就会占用很少的资源.但是我们建议大家用release,不确定目标架构,甚至安利debug,目的就是让大家体验一次比较大的工程的编译过程.
+
+4.5 Wsl上是不是不能用grun -gui啊?
+> 可以折腾wsl上的gui,但是这一阶段建议用mac或者完整的linux系统(而不是子系统)
 <a id="5"/>
 
 ## 5. 课程资源 
 
-4.1  bison-examples.zip解压缩不了?
+5.1  bison-examples.zip解压缩不了?
 > 通过快压可以.....
 
-4.2 老师上课放的例子在主页的什么位置?
+5.2 老师上课放的例子在主页的什么位置?
 > 在bison-examples同一个[页面](<http://staff.ustc.edu.cn/~yuzhang/compiler/second/2017f.html>)下面,叫flex-examples.
+
+### new [10.10 updated.]
+
+5.3 web全称是?
+> 计院方向课 -> [课程主页](http://staff.ustc.edu.cn/~jpq/courses/webinfo.html)
+
+5.4 "lab1-1的九个维度上的评价标准"在哪里呀?在github上没找到
+> https://github.com/ustc-compiler/2018fall/blob/master/labEvalStd(Reference).md
+
+5.5 那么有什么好玩又有趣的编译相关的课外活动可以参加的吗?
+# **有感兴趣在龙芯平台上开展编译器优化、JS引擎的垃圾收集优化的同学可以私信张老师!! 虽然大家对编译优化的知识还不太了解，但是可以通过具体的问题和平时的研讨与实战来领悟和提升。希望咱们能为构筑国家基础软硬件生态系统尽一份力。**
 
 <a id="6"/>
 
@@ -209,5 +316,21 @@ git@202.38.79.111's password:
     | src/
 >>  | test/test_cases/lexer/  增加你的测试程序
 >>  | doc/                    增加文档描述实验中遇到的问题、分析和设计，文件名前缀为lab1-1
+    | 其他已有的文件
+```
+### new [10.10 updated.]
+6.2.2 Lab1-2
+``` text
+- <your repo>
+  | lab1-answer
+    | lab1-2.*           回答lab1-2的问题1--问题3
+    | 其他被引用图像文件
+  | c1recognizer         复制自公共仓库的 c1recognizer 项目。请勿遗漏内容。
+    | cmake/
+>>  | grammar/           修改其中的 C1Parser.g4
+    | include/c1recognizer/ 
+    | src/
+>>  | test/test_cases/   补充你的测试程序
+>>  | doc/               增加文档描述实验中遇到的问题、分析和设计,文件名前缀为lab1-2.
     | 其他已有的文件
 ```
