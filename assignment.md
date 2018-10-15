@@ -1,3 +1,4 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 # Assignments
 
 对网络提交（包括Git仓库和发送至助教）的作业，截止时间统一为所述日期22时整。
@@ -5,18 +6,19 @@
 对纸质提交的作业，截止时间统一为所述日期课前。
 
 
-| Date      | Homework          | Project                                  | HW Due        | Proj Due |
-| :-------- | :---------------- | :--------------------------------------- | :------------ | :------- |
-| 10.11, Thu | [H5](#h5) | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) | 10.15, Mon | 10.15, Mon |
-| 10.8, Mon |  | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) |  | 10.15, Mon |
-| 9.29, Sat | [H4-2](#h4-2) | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) | 10.8, Mon | 10.15, Mon |
-| 9.27, Thu | [H4-1](#h4-1) | | 10.8, Mon | -        |
-| 9.20, Thu | [H3-2](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
-| 9.17, Mon | [H3-1](#h3-1) | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu | 9.24, Mon        |
-| 9.13, Thu | ~~[H2-2](#h2-2)~~ | [Environment](https://clarazhang.gitbooks.io/compiler-f2018/content/environment.html) | ~~9.17, Mon~~ | -        |
-| 9.10, Mon | [H2-1](#h2-1)     | None                                     | 9.17, Mon     | -        |
-| 9.6, Thu  | [H1](#h1)         | None                                     | 9.9, Sun      | -        |
-| 9.3, Mon  | [H0](#h0)         | None                                     | 9.6, Thu      | -        |
+| Date       | Homework          | Project                                  | HW Due        | Proj Due   |
+| :--------- | :---------------- | :--------------------------------------- | :------------ | :--------- |
+| 10.15, Mon | [H6-1](#h6-1)     |                                          | 10.22, Mon    |            |
+| 10.11, Thu | [H5](#h5)         | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) | 10.15, Mon    | 10.15, Mon |
+| 10.8, Mon  |                   | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) |               | 10.15, Mon |
+| 9.29, Sat  | [H4-2](#h4-2)     | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) | 10.8, Mon     | 10.15, Mon |
+| 9.27, Thu  | [H4-1](#h4-1)     |                                          | 10.8, Mon     | -          |
+| 9.20, Thu  | [H3-2](#h3-1)     | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu     | 9.24, Mon  |
+| 9.17, Mon  | [H3-1](#h3-1)     | [Lab1-1](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html) | 9.27, Thu     | 9.24, Mon  |
+| 9.13, Thu  | ~~[H2-2](#h2-2)~~ | [Environment](https://clarazhang.gitbooks.io/compiler-f2018/content/environment.html) | ~~9.17, Mon~~ | -          |
+| 9.10, Mon  | [H2-1](#h2-1)     | None                                     | 9.17, Mon     | -          |
+| 9.6, Thu   | [H1](#h1)         | None                                     | 9.9, Sun      | -          |
+| 9.3, Mon   | [H0](#h0)         | None                                     | 9.6, Thu      | -          |
 
 ## 习题课课件
 
@@ -117,7 +119,7 @@ Book 3.19  3.20
 3.19 考虑下面的文法
 E --> E + T | T
 T --> T F | F
-F --> F | a | b
+F --> F* | a | b
 (a) 为此文法构造SLR分析表。
 (b) 为此文法构造LALR分析表。
 
@@ -125,4 +127,29 @@ F --> F | a | b
 	S --> S A | A
 	A --> a
 是SLR(1)文法，但不是LL(1)文法。
+```
+
+### H6-1
+Book 3.27  3.31  3.33  3.37
+
+```
+3.27 文法G的产生式如下：
+    S --> I | R	    I --> d | I d 	R --> WpF
+    W --> Wd | \epsilon     F --> F d | d
+(a) 令d表示任意数字，p表示十进制小数点，那么非终结符S, I, R, W和F在编程语言中分别表示什么？
+(b) 该文法是LR(1 )文法吗？为什么？
+
+3.31 下面两个文法中哪一个不是LR(1)文法？对非LR(1)的那个文法，给出那个有移进‑归约冲突的规范的LR(1)项目集。
+    S --> a A c			S --> a A c
+    A --> A b b | b		A --> b A b | b
+
+3.33 为语言
+    L = {a^{m}b^{n} | 0<= m <= 2n}（即a的个数不超过b的个数的两倍）
+写三个文法，它们分别是LR(1)的、二义的和非二义且非LR(1)的。
+注： a^{m}b^{n} 为在latex中的公式表示方法，表示m个a后跟n个b
+
+3.37 下面是一个二义文法
+    S --> AS | b
+    A --> S A | a
+如果为该文法构造LR分析表，则一定存在某些有分析动作冲突的条目，它们是哪些？假定分析表这样来使用：出现冲突时，不确定地选择一个可能的动作。给出对于输入abab所有可能的动作序列。
 ```
