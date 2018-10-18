@@ -4,11 +4,17 @@
 
 
 - <a href="#1">`1. ssh/git相关`</a>
+  - <a href="#1new">`new`</a>
 - <a href="#2">`2. HW相关`</a>
+  - <a href="#2new">`new`</a>
 - <a href="#3">`3. Lab相关`</a>
+  - <a href="#3new">`new`</a>
 - <a href="#4">`4. 其他系统/平台/环境等相关`</a>
+  - <a href="#4new">`new`</a>
 - <a href="#5">`5. 课程资源`</a>
+  - <a href="#5new">`new`</a>
 - <a href="#6">`6. 目录结构`</a>
+  - <a href="#6new">`new`</a>
 
  <a id="1"/>
  
@@ -54,6 +60,8 @@ git@202.38.79.111's password:
 > 记得先git pull.
 > 对于git的用法,务必参考你们git库下面的REAMDME-git!!!!!!!
 
+ <a id="1new"/>
+
 ### new [10.10 updated.]
 
 1.4 不能git add *吗?为什么?
@@ -90,6 +98,8 @@ git@202.38.79.111's password:
 
 2.8 纸质作业交到哪里?什么时候交?
 > 纸质作业交到讲桌旁边的白色小桌子上,截止日期当天上课前交.
+
+ <a id="2new"/>
 
 ### new [10.10 updated.]
 
@@ -157,6 +167,8 @@ git@202.38.79.111's password:
 
 3.17 像x=09这种这种问题，antlr会识别成0和9两个intconst，而不是报错，这种类型的错误是不是要留到语法的部分处理？
 > 是的.
+
+ <a id="3new"/>
 
 ### new [10.10 updated.]
 
@@ -234,6 +246,7 @@ Date:   Mon Sep 24 13:49:09 2018 +0800
 (https://blog.csdn.net/xiahouzuoxin/article/details/26478179)
 
 <a id="4"/>
+
 ## 4. 其他系统/平台/环境等相关 
 
 4.1 64位机器没办法运行32位的程序怎么办?
@@ -254,6 +267,8 @@ Date:   Mon Sep 24 13:49:09 2018 +0800
     Sum of buffers and cache
 ```
 
+ <a id="4new"/>
+
 ### new [10.10 updated.]
 
 4.4 llvm-build可以删掉吗？竟然有44.1GB?
@@ -270,6 +285,8 @@ Date:   Mon Sep 24 13:49:09 2018 +0800
 
 5.2 老师上课放的例子在主页的什么位置?
 > 在bison-examples同一个[页面](<http://staff.ustc.edu.cn/~yuzhang/compiler/second/2017f.html>)下面,叫flex-examples.
+
+ <a id="5new"/>
 
 ### new [10.10 updated.]
 
@@ -318,6 +335,9 @@ Date:   Mon Sep 24 13:49:09 2018 +0800
 >>  | doc/                    增加文档描述实验中遇到的问题、分析和设计，文件名前缀为lab1-1
     | 其他已有的文件
 ```
+
+ <a id="6new"/>
+
 ### new [10.10 updated.]
 6.2.2 Lab1-2
 ``` text
