@@ -1,4 +1,3 @@
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 # Assignments
 
 对网络提交（包括Git仓库和发送至助教）的作业，截止时间统一为所述日期22时整。
@@ -8,6 +7,7 @@
 
 | Date       | Homework          | Project                                  | HW Due        | Proj Due   |
 | :--------- | :---------------- | :--------------------------------------- | :------------ | :--------- |
+| 10.22, Mon | [H7-1](#h7-1)     |                                          | 10.29, Mon    |            |
 | 10.18, Thu | [H6-2](#h6-2)     |                                          | 10.22, Mon    |            |
 | 10.15, Mon | [H6-1](#h6-1)     |                                          | 10.22, Mon    |            |
 | 10.11, Thu | [H5](#h5)         | [Lab1-2](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#Lab1-2-c1-的语法分析) | 10.15, Mon    | 10.15, Mon |
@@ -163,5 +163,15 @@ Book 4.3
     L --> L , S | S
 (a) 写一个语法制导定义，它输出括号的对数。
 (b) 写一个语法制导定义，它输出括号嵌套的最大深度。
+```
+
+### H7-1
+Book 4.12(b) 并写出相应的语法制导定义、预测翻译器
+
+```
+4.12 为文法
+    S --> ( L ) | a
+    L --> L , S | S
+(b) 分别写出相应的语法制导定义、翻译方案以及预测翻译器，它打印出每个a在句子中是第几个字符。例如，当句子是(a,(a,(a,a),(a)))时，打印的结果是 2  5  8  10  14。
 ```
 
