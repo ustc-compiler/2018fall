@@ -138,7 +138,9 @@ struct lval_syntax : expr_syntax
 // Expression constructed by a literal number.
 struct literal_syntax : expr_syntax
 {
-    int number;
+    bool is_int;
+    int intConst;
+    double floatConst;
     virtual void accept(syntax_tree_visitor &visitor) override final;
 };
 
@@ -153,6 +155,7 @@ struct stmt_syntax : virtual syntax_tree_node
 struct var_def_stmt_syntax : stmt_syntax, global_def_syntax
 {
     bool is_constant;
+    bool is_int;
     std::string name;
     ptr<expr_syntax> array_length; // nullptr for non-array variables
     ptr_list<expr_syntax> initializers;

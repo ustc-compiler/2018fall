@@ -27,6 +27,7 @@ class syntax_tree_builder : public C1ParserBaseVisitor
     virtual antlrcpp::Any visitLval(C1Parser::LvalContext *ctx) override;
     virtual antlrcpp::Any visitCond(C1Parser::CondContext *ctx) override;
     virtual antlrcpp::Any visitExp(C1Parser::ExpContext *ctx) override;
+    virtual antlrcpp::Any visitNumber(C1Parser::NumberContext *ctx) override;
 
     ptr<syntax_tree_node> operator()(antlr4::tree::ParseTree *ctx);
 

@@ -104,17 +104,29 @@ antlrcpp::Any syntax_tree_builder::visitExp(C1Parser::ExpContext *ctx)
     // In the case that `(` exists as a child, this is an expression like `'(' expressions[0] ')'`.
     if (ctx->LeftParen())
         return visit(expressions[0]); // Any already holds expr_syntax* here, no need for dispatch and re-patch with casting.
-    // If `Number` exists as a child, we can say it's a literal integer expression.
-    if (auto number = ctx->Number())
+    // If `number` exists as a child, we can say it's a literal integer expression.
+    if (auto number = ctx->number())
+        return visit(number);
+}
+
+antlrcpp::Any syntax_tree_builder::visitNumber(C1Parser::NumberContext *ctx)
+{
+    auto result = new literal_syntax;
+    if (auto intConst = ctx->IntConst())
     {
-        auto result = new literal_syntax;
-        result->line = number->getSymbol()->getLine();
-        result->pos = number->getSymbol()->getCharPositionInLine();
-        auto text = number->getSymbol()->getText();
-        if (text[0] == '0' && text[1] == 'x')              // Hexadecimal
-            result->number = std::stoi(text, nullptr, 16); // std::stoi will eat '0x'
-        else                                               // Decimal
-            result->number = std::stoi(text, nullptr, 10);
+        result->is_int = true;
+        result->line = intConst->getSymbol()->getLine();
+        result->pos = intConst->getSymbol()->getCharPositionInLine();
+        auto text = intConst->getSymbol()->getText();
+        if (text[0] == '0' && text[1] == 'x')                // Hexadecimal
+            result->intConst = std::stoi(text, nullptr, 16); // std::stoi will eat '0x'
+        /* you need to add other situations here */
+        
+        return static_cast<expr_syntax *>(result);
+    }
+    // else FloatConst
+    else
+    {
         return static_cast<expr_syntax *>(result);
     }
 }

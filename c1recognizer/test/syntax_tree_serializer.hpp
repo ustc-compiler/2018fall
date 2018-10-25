@@ -137,8 +137,13 @@ class syntax_tree_serializer : public syntax_tree_visitor
         writer.Int(tree.line);
         writer.Key("pos");
         writer.Int(tree.pos);
+        writer.Key("is_int");
+        writer.Bool(tree.is_int);
         writer.Key("value");
-        writer.Int(tree.number);
+        if(tree.is_int)
+            writer.Int(tree.intConst);
+        else
+            writer.Double(tree.floatConst);
         writer.EndObject();
     }
 
@@ -153,6 +158,8 @@ class syntax_tree_serializer : public syntax_tree_visitor
         writer.Int(tree.pos);
         writer.Key("is_const");
         writer.Bool(tree.is_constant);
+        writer.Key("is_int");
+        writer.Bool(tree.is_int);
         writer.Key("name");
         writer.String(tree.name.c_str());
         if (tree.array_length)
