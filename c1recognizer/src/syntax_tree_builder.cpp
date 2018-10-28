@@ -118,7 +118,7 @@ antlrcpp::Any syntax_tree_builder::visitNumber(C1Parser::NumberContext *ctx)
         result->line = intConst->getSymbol()->getLine();
         result->pos = intConst->getSymbol()->getCharPositionInLine();
         auto text = intConst->getSymbol()->getText();
-        if (text[0] == '0' && text[1] == 'x')                // Hexadecimal
+        if (text[0] == '0' && (text[1] == 'x' || text[1] == 'X')) // Hexadecimal
             result->intConst = std::stoi(text, nullptr, 16); // std::stoi will eat '0x'
         /* you need to add other situations here */
         
