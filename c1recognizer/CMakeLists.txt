@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.5)
 
 add_definitions(-DFULL_IMPL)
 
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+       PROPERTY EP_UPDATE_DISCONNECTED 1)
+
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
 
 # compiler must be 11 or 14
