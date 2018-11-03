@@ -7,7 +7,7 @@
 
 | Date       | Homework          | Project                                  | HW Due        | Proj Due   |
 | :--------- | :---------------- | :--------------------------------------- | :------------ | :--------- |
-| 10.25, Mon | [H7-2](#h7-2)     | [Lab1-3](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#lab1-3-生成-ast-的-c1-解析器) | 10.29, Mon    |
+| 10.25, Mon | [H7-2](#h7-2)     | [Lab1-3](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#lab1-3-生成-ast-的-c1-解析器) | 10.29, Mon    | 11.12, Mon
 11.12 Mon   |
 | 10.22, Mon | [H7-1](#h7-1)     |                                          | 10.29, Mon    |            |
 | 10.18, Thu | [H6-2](#h6-2)     |                                          | 10.22, Mon    |            |
