@@ -7,8 +7,8 @@
 
 | Date       | Homework          | Project                                  | HW Due        | Proj Due   |
 | :--------- | :---------------- | :--------------------------------------- | :------------ | :--------- |
-| 10.25, Mon | [H7-2](#h7-2)     | [Lab1-3](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#lab1-3-生成-ast-的-c1-解析器) | 10.29, Mon    | 11.12, Mon
-11.12 Mon   |
+| 11.5, Mon | [H8-1](#h8-1)     | | 11.12, Mon    | |
+| 10.25, Mon | [H7-2](#h7-2)     | [Lab1-3](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#lab1-3-生成-ast-的-c1-解析器) | 10.29, Mon    | 11.12, Mon  |
 | 10.22, Mon | [H7-1](#h7-1)     |                                          | 10.29, Mon    |            |
 | 10.18, Thu | [H6-2](#h6-2)     |                                          | 10.22, Mon    |            |
 | 10.15, Mon | [H6-1](#h6-1)     |                                          | 10.22, Mon    |            |
@@ -180,3 +180,39 @@ Book 4.12(b) 并写出相应的语法制导定义、预测翻译器
 ### H7-2
 Book 4.12(b) 写出自下而上分析的栈操作代码
 
+### H8-1
+Book 5.7 5.12 5.15 5.17
+
+```
+5.7 下列文法定义字面常量表的表。符号的解释和图5.2文法的那些相同，增加了类型list，它表示类型T的元素表；增加了nil，表示空表，其元素可以是任何类型。
+  P --> D; E
+  D --> D; D | id : T
+  T --> list of T | char | integer
+  E --> (L) | literal | num | id | nil
+  L --> E, L | E
+写一个类似5.3节中的翻译方案，以确定表达式(E )和表(L)的类型。
+
+5.12 拓展5.3.3节的类型检查，使之能包含记录。有关记录部分的类型和记录域引用表达式的语法如下：
+  T --> record fields end
+  fields --> fields; field | field
+  field --> id : T
+  E --> E.id
+
+5.15 找出下列表达式的最一般的合一代换：
+(a) (pointer (\alpha)) x (\beta --> \gamma )
+(b) \beta X (\gamma --> \delta )
+如果(b)的\delta 是\alpha 呢？
+
+5.17 效仿例5.5，推导下面map的多态类型：
+map : \forall \alpha. \forall \beta. ( (\alpha-->\beta)x list(\alpha)) --> list (\beta)
+map的ML定义是
+  fun map (f, l ) =
+    if null (l ) then nil
+    else cons (f (hd (l)), map (f, tl (l ) ) );
+在这个函数体中，内部定义的标识符的类型是：
+  null : \forall \alpha.list(\alpha) --> boolean;
+  nil : \forall \alpha.list(\alpha);
+  cons : \forall \alpha.(\alpha x list(\alpha)) --> list(\alpha);
+  hd : \forall \alpha.list(\alpha) \alpha;
+  tl : \forall \alpha. list(\alpha) --> list(\alpha);
+```
