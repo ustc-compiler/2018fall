@@ -7,6 +7,7 @@
 
 | Date       | Homework          | Project                                  | HW Due        | Proj Due   |
 | :--------- | :---------------- | :--------------------------------------- | :------------ | :--------- |
+| 11.12, Mon | [H9](#h9)     | | 11.19, Mon    | |
 | 11.8, Thu |      | [Lab2-1](https://clarazhang.gitbooks.io/compiler-f2018/content/llvmIRGen.html#211-lab2-1预热实验)| | 11.19, Mon    | 
 | 11.5, Mon | [H8-1](#h8-1)     | | 11.12, Mon    | |
 | 10.25, Mon | [H7-2](#h7-2)     | [Lab1-3](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#lab1-3-生成-ast-的-c1-解析器) | 10.29, Mon    | 11.12, Mon  |
@@ -216,4 +217,116 @@ map的ML定义是
   cons : \forall \alpha.(\alpha x list(\alpha)) --> list(\alpha);
   hd : \forall \alpha.list(\alpha) \alpha;
   tl : \forall \alpha. list(\alpha) --> list(\alpha);
+```
+### H9
+Book 7.9(汇编码有更新) 7.10(题目有扩充) 7.17
+
+注：本次作业提交到git仓库中的`HW/H9`目录下
+```
+7.9 下面的C语言程序
+main() {
+	int i,j;
+	while ( (i || j) && (j > 5) ) {
+		i = j;
+	}
+}
+在x86/Linux系统上编译生成的汇编代码如下（编译器版本见汇编代码最后一行）：
+        .file   "ex7-9.c"
+        .text
+        .globl  main
+        .type   main, @function
+main:
+.LFB0:
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $16, %esp
+        jmp     .L2
+.L5:
+        movl    -4(%ebp), %eax
+        movl    %eax, -8(%ebp)
+.L2:
+        cmpl    $0, -8(%ebp)
+        jne     .L3
+        cmpl    $0, -4(%ebp)
+        jne     .L3
+        cmpl    $0, -4(%ebp)
+        je      .L4
+.L3:
+        cmpl    $5, -4(%ebp)
+        jg      .L5
+.L4:
+        movl    $0, %eax
+        leave
+        ret
+.LFE0:
+        .size   main, .-main
+        .ident  "GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.5) 5.4.0 20160609"
+在该汇编代码中有关的指令后加注释，将源程序中的操作和生成的汇编代码对应起来，以判断确实是用短路计算方式来完成布尔表达式计算的。
+
+7.10 下面是一个C语言程序和在x86/Linux系统上编译（版本较低的GCC编译器，并且未使用优化）该程序得到的汇编代码（为便于理解，略去了和讨论本问题无关的部分，并改动了一个地方）。
+main() {
+	long i,j;
+	if ( j )
+		i++;
+	else 
+		while ( i ) j++;
+}
+编译产生的汇编代码如下：
+main:
+	pushl %ebp 
+	movl %esp,%ebp 
+	subl $8,%esp 
+	cmpl $0,-8(%ebp)
+	je .L2
+	incl -4(%ebp)
+	jmp .L3
+.L2:
+.L4:
+	cmpl $0,-4(%ebp)
+	jne .L6
+	jmp .L5
+.L6:
+	incl -8(%ebp)
+	jmp .L4
+.L5:
+.L3:
+.L1:
+	leave 
+	ret 
+
+(a) 为什么会出现一条指令前有多个标号的情况，如.L2和.L4，还有.L5、.L3和.L1？从控制流语句的中间代码结构加以解释。
+(b) 每个函数都有这样的标号.L1，它可能的作用是什么，为什么本函数没有引用该标号的地方？
+(c) 如果用较新的gcc版本（如gcc5.4.0）使用-m32 选项进行编译，产生的汇编代码如下。请说明L3~L5的含义，为什么没有L1和L2标号，分析可能的原因。
+        .file   "ex7-10.c"
+        .text
+        .globl  main
+        .type   main, @function
+main:
+.LFB0:
+        pushl   %ebp
+        movl    %esp, %ebp
+        subl    $16, %esp
+        cmpl    $0, -8(%ebp)
+        je      .L4
+        addl    $1, -4(%ebp)
+        jmp     .L3
+.L5:
+        addl    $1, -8(%ebp)
+.L4:
+        cmpl    $0, -4(%ebp)
+        jne     .L5
+.L3:
+        movl    $0, %eax
+        leave
+        ret
+.LFE0:
+        .size   main, .-main
+        .ident  "GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.5) 5.4.0 20160609"
+
+7.17 C语言和Java语言的数组声明和数组元素引用的语法形式同7.3.节讨论的不一样，例如float A[10][20]和A[i+1][j-1]，并且每一维的下界都是0。若适应这种情况的赋值语句的文法如下：
+S --> L := E
+E --> E + E | (E ) | L
+L --> L [E ] | id
+（a）重新设计7.3.2节数组元素的地址计算公式，以方便编译器产生数组元素地址计算的中间代码。不要忘记每一维的下界都是0。
+（b）重新设计数组元素地址计算的翻译方案。只需写出产生式L --> L [E ] | id的翻译方案，但要能和7.3.3节中产生式S --> L := E和E --> E + E | (E ) | L的翻译方案衔接。若翻译方案中引入新的函数调用，要解释这些函数的含义。
 ```
