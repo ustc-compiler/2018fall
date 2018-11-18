@@ -6,8 +6,10 @@
 extern "C" {
 #endif
 
-void input(int *);
-void output(int *);
+void inputInt(int *);
+void inputFloat(double *);
+void outputInt(int *);
+void outputFloat(double *);
 
 #ifdef __cplusplus
 }

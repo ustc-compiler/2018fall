@@ -1,4 +1,4 @@
-# C1 Language Interpreter (Reference Version)
+# C1 Language Interpreter 
 
 ## Introduction
 

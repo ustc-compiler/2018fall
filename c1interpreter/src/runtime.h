@@ -11,15 +11,19 @@
 
 class runtime_info
 {
-    llvm::GlobalVariable *input_var;
-    llvm::GlobalVariable *output_var;
-    llvm::Function *input_func;
-    llvm::Function *output_func;
+    llvm::GlobalVariable *input_ivar;
+    llvm::GlobalVariable *input_fvar;
+    llvm::GlobalVariable *output_ivar;
+    llvm::GlobalVariable *output_fvar;
+    llvm::Function *inputInt_func;
+    llvm::Function *inputFloat_func;
+    llvm::Function *outputInt_func;
+    llvm::Function *outputFloat_func;
 
   public:
     runtime_info(llvm::Module *module);
 
-    std::vector<std::tuple<std::string, llvm::GlobalValue *, bool, bool, bool>> get_language_symbols();
+    std::vector<std::tuple<std::string, llvm::GlobalValue *, bool, bool, bool, bool>> get_language_symbols();
 
     std::vector<std::tuple<std::string, void *>> get_runtime_symbols();
 };

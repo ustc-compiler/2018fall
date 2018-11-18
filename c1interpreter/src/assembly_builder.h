@@ -45,7 +45,9 @@ class assembly_builder : public c1_recognizer::syntax_tree::syntax_tree_visitor
     std::unique_ptr<runtime_info> runtime;
 
     llvm::Value *value_result;
-    int const_result;
+    int int_const_result;
+    double float_const_result;
+    bool is_result_int;
 
     llvm::Function *current_function;
     int bb_count;
@@ -75,11 +77,12 @@ class assembly_builder : public c1_recognizer::syntax_tree::syntax_tree_visitor
             bool is_function;
             bool is_const;
             bool is_array;
-            std::tie(name, val, is_function, is_const, is_array) = t;
+            bool is_int;
+            std::tie(name, val, is_function, is_const, is_array, is_int) = t;
             if (is_function)
                 functions[name] = static_cast<llvm::Function *>(val);
             else
-                declare_variable(name, val, is_const, is_array);
+                declare_variable(name, val, is_const, is_array, is_int);
         }
 
         lval_as_rval = true;
@@ -106,23 +109,23 @@ class assembly_builder : public c1_recognizer::syntax_tree::syntax_tree_visitor
 
     void exit_scope() { variables.pop_front(); }
 
-    std::tuple<llvm::Value *, bool, bool> lookup_variable(std::string name)
+    std::tuple<llvm::Value *, bool, bool, bool> lookup_variable(std::string name)
     {
         for (auto m : variables)
             if (m.count(name))
                 return m[name];
-        return std::make_tuple((llvm::Value *)nullptr, false, false);
+        return std::make_tuple((llvm::Value *)nullptr, false, false, true);
     }
 
-    bool declare_variable(std::string name, llvm::Value *var_ptr, bool is_const, bool is_array)
+    bool declare_variable(std::string name, llvm::Value *var_ptr, bool is_const, bool is_array, bool is_int)
     {
         if (variables.front().count(name))
             return false;
-        variables.front()[name] = std::make_tuple(var_ptr, is_const, is_array);
+        variables.front()[name] = std::make_tuple(var_ptr, is_const, is_array, is_int);
         return true;
     }
 
-    std::deque<std::unordered_map<std::string, std::tuple<llvm::Value *, bool, bool>>> variables;
+    std::deque<std::unordered_map<std::string, std::tuple<llvm::Value *, bool, bool, bool>>> variables;
 
     std::unordered_map<std::string, llvm::Function *> functions;
 };

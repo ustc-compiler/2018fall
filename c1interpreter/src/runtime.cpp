@@ -12,64 +12,110 @@ using namespace llvm;
 
 runtime_info::runtime_info(Module *module)
 {
-    input_var = new GlobalVariable(*module,
+    input_ivar = new GlobalVariable(*module,
                                    Type::getInt32Ty(module->getContext()),
                                    false,
                                    GlobalValue::ExternalLinkage,
                                    ConstantInt::get(Type::getInt32Ty(module->getContext()), 0),
-                                   "input_var");
-    output_var = new GlobalVariable(*module,
+                                   "input_ivar");
+    input_fvar = new GlobalVariable(*module,
+                                   Type::getDoubleTy(module->getContext()),
+                                   false,
+                                   GlobalValue::ExternalLinkage,
+                                   ConstantFP::get(Type::getDoubleTy(module->getContext()), 0),
+                                   "input_fvar");
+    output_ivar = new GlobalVariable(*module,
                                     Type::getInt32Ty(module->getContext()),
                                     false,
                                     GlobalValue::ExternalLinkage,
                                     ConstantInt::get(Type::getInt32Ty(module->getContext()), 0),
-                                    "output_var");
-    auto input_impl = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()),
+                                    "output_ivar");
+    output_fvar = new GlobalVariable(*module,
+                                    Type::getDoubleTy(module->getContext()),
+                                    false,
+                                    GlobalValue::ExternalLinkage,
+                                    ConstantFP::get(Type::getDoubleTy(module->getContext()), 0),
+                                    "output_fvar");
+    auto inputInt_impl = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()),
                                                          {Type::getInt32PtrTy(module->getContext())},
                                                          false),
                                        GlobalValue::LinkageTypes::ExternalLinkage,
-                                       "input_impl",
+                                       "inputInt_impl",
                                        module);
-    auto output_impl = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()),
+    auto inputFloat_impl = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()),
+                                                         {Type::getDoublePtrTy(module->getContext())},
+                                                         false),
+                                       GlobalValue::LinkageTypes::ExternalLinkage,
+                                       "inputFloat_impl",
+                                       module);
+    auto outputInt_impl = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()),
                                                           {Type::getInt32PtrTy(module->getContext())},
                                                           false),
                                         GlobalValue::LinkageTypes::ExternalLinkage,
-                                        "output_impl",
+                                        "outputInt_impl",
+                                        module);
+    auto outputFloat_impl = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()),
+                                                          {Type::getDoublePtrTy(module->getContext())},
+                                                          false),
+                                        GlobalValue::LinkageTypes::ExternalLinkage,
+                                        "outputFloat_impl",
                                         module);
 
     IRBuilder<> builder(module->getContext());
 
-    input_func = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()), {}, false),
+    inputInt_func = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()), {}, false),
                                   GlobalValue::LinkageTypes::ExternalLinkage,
-                                  "input",
+                                  "inputInt",
                                   module);
-    builder.SetInsertPoint(BasicBlock::Create(module->getContext(), "entry", input_func));
-    builder.CreateCall(input_impl, {input_var});
+    builder.SetInsertPoint(BasicBlock::Create(module->getContext(), "entry", inputInt_func));
+    builder.CreateCall(inputInt_impl, {input_ivar});
     builder.CreateRetVoid();
 
-    output_func = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()), {}, false),
+    inputFloat_func = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()), {}, false),
+                                  GlobalValue::LinkageTypes::ExternalLinkage,
+                                  "inputFloat",
+                                  module);
+    builder.SetInsertPoint(BasicBlock::Create(module->getContext(), "entry", inputFloat_func));
+    builder.CreateCall(inputFloat_impl, {input_fvar});
+    builder.CreateRetVoid();
+
+    outputInt_func = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()), {}, false),
                                    GlobalValue::LinkageTypes::ExternalLinkage,
-                                   "output",
+                                   "outputInt",
                                    module);
-    builder.SetInsertPoint(BasicBlock::Create(module->getContext(), "entry", output_func));
-    builder.CreateCall(output_impl, {output_var});
+    builder.SetInsertPoint(BasicBlock::Create(module->getContext(), "entry", outputInt_func));
+    builder.CreateCall(outputInt_impl, {output_ivar});
+    builder.CreateRetVoid();
+
+    outputFloat_func = Function::Create(FunctionType::get(Type::getVoidTy(module->getContext()), {}, false),
+                                   GlobalValue::LinkageTypes::ExternalLinkage,
+                                   "outputFloat",
+                                   module);
+    builder.SetInsertPoint(BasicBlock::Create(module->getContext(), "entry", outputFloat_func));
+    builder.CreateCall(outputFloat_impl, {output_fvar});
     builder.CreateRetVoid();
 }
 
 using namespace string_literals;
 
-vector<tuple<string, llvm::GlobalValue *, bool, bool, bool>> runtime_info::get_language_symbols()
+vector<tuple<string, llvm::GlobalValue *, bool, bool, bool, bool>> runtime_info::get_language_symbols()
 {
     return {
-        make_tuple("input_var"s, input_var, false, false, false),
-        make_tuple("output_var"s, output_var, false, false, false),
-        make_tuple("input"s, input_func, true, false, false),
-        make_tuple("output"s, output_func, true, false, false)};
+        make_tuple("input_ivar"s, input_ivar, false, false, false, true),
+        make_tuple("input_fvar"s, input_fvar, false, false, false, false),
+        make_tuple("output_ivar"s, output_ivar, false, false, false, true),
+        make_tuple("output_fvar"s, output_fvar, false, false, false, false),
+        make_tuple("inputInt"s, inputInt_func, true, false, false, true),
+        make_tuple("inputFloat"s, inputFloat_func, true, false, false, false),
+        make_tuple("outputInt"s, outputInt_func, true, false, false, true),
+        make_tuple("outputFloat"s, outputFloat_func, true, false, false, false)};
 }
 
 vector<tuple<string, void *>> runtime_info::get_runtime_symbols()
 {
     return {
-        make_tuple("input_impl"s, (void *)&::input),
-        make_tuple("output_impl"s, (void *)&::output)};
+        make_tuple("inputInt_impl"s, (void *)&::inputInt),
+        make_tuple("inputFloat_impl"s, (void *)&::inputFloat),
+        make_tuple("outputInt_impl"s, (void *)&::outputInt),
+        make_tuple("outputFloat_impl"s, (void *)&::outputFloat) };
 }
