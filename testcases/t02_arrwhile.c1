@@ -1,0 +1,9 @@
+void main() {
+	const int m = 10;
+	int i = 9, j = 3, a[m*(10/10)]={1,2,3};
+	while (i > j - 3 ) {
+		a[i]=j;
+		j = j + 1;
+		i = i - 1;
+	}
+}
