@@ -1,7 +1,7 @@
 void main() {
-	const N=10;
+	const int N=10;
 	int x, j=1;
-	int a[N] = {1};
+	int a[10] = {1};
 	while ( j < N) {
 		a[j] = a[j-1] + 1;
 		a[j*1] = a[j/j+j*1-1];
