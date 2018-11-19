@@ -7,7 +7,7 @@
 
 | Date       | Homework          | Project                                  | HW Due        | Proj Due   |
 | :--------- | :---------------- | :--------------------------------------- | :------------ | :--------- |
-| 11.19, Mon | [H9](#h9)     | | 11.26, Mon    | |
+| 11.19, Mon | [H9](#h9)     | [Lab2-2](https://clarazhang.gitbooks.io/compiler-f2018/content/llvmIRGen.html#212-lab2-2实验要求和提交细则) | 11.26, Mon    | 12.2 Sun |
 | 11.8, Thu |      | [Lab2-1](https://clarazhang.gitbooks.io/compiler-f2018/content/llvmIRGen.html#211-lab2-1预热实验)| | 11.19, Mon    | 
 | 11.5, Mon | [H8-1](#h8-1)     | | 11.12, Mon    | |
 | 10.25, Mon | [H7-2](#h7-2)     | [Lab1-3](https://clarazhang.gitbooks.io/compiler-f2018/content/parser.html#lab1-3-生成-ast-的-c1-解析器) | 10.29, Mon    | 11.12, Mon  |
