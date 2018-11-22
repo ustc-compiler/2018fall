@@ -2,7 +2,7 @@ int in_fib;
 int ret_fib;
 void fib() {
     if (in_fib == 0) ret_fib = 0;
-    else if (in_fib == 1) ret_fib = 0;
+    else if (in_fib == 1) ret_fib = 1;
     else {
         int self_in = in_fib;
         in_fib = self_in - 1;
