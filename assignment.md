@@ -7,6 +7,7 @@
 
 | Date       | Homework          | Project                                  | HW Due        | Proj Due   |
 | :--------- | :---------------- | :--------------------------------------- | :------------ | :--------- |
+| 11.26, Mon | [H10-1](#h10-1)    |  | 12.3, Mon    |  |
 | 11.19, Mon | [H9](#h9)     | [Lab2-2](https://clarazhang.gitbooks.io/compiler-f2018/content/llvmIRGen.html#212-lab2-2实验要求和提交细则) | 11.26, Mon    | 12.2 Sun |
 | 11.8, Thu |      | [Lab2-1](https://clarazhang.gitbooks.io/compiler-f2018/content/llvmIRGen.html#211-lab2-1预热实验)| | 11.19, Mon    | 
 | 11.5, Mon | [H8-1](#h8-1)     | | 11.12, Mon    | |
@@ -330,3 +331,89 @@ L --> L [E ] | id
 （a）重新设计7.3.2节数组元素的地址计算公式，以方便编译器产生数组元素地址计算的中间代码。不要忘记每一维的下界都是0。
 （b）重新设计数组元素地址计算的翻译方案。只需写出产生式L --> L [E ] | id的翻译方案，但要能和7.3.3节中产生式S --> L := E和E --> E + E | (E ) | L的翻译方案衔接。若翻译方案中引入新的函数调用，要解释这些函数的含义。
 ```
+### H10-1
+Book 6.18 (有修改)  自行设计的题目及解答（要求见下面）
+
+6.18 下面是一个C语言程序：
+```
+	main() {
+		long i;
+		long a[0][4];
+		long j;
+		i = 4; j = 8;
+		printf(“%d, %ld\n”, sizeof(a), a[0][0]);
+	}
+```
+虽然出现long a[0][4]这样的声明，但在x86/Linux系统上，用编译器GCC:  (Ubuntu 5.4.0-6ubuntu1~16.04.5) 5.4.0 20160609/Linux (egcs-1.1.2 release)编译时，该程序能够通过编译并生成目标代码。下面是用gcc -m32 -S 编译该程序产生的汇编代码：
+
+```
+.file   "ex6-18.c"
+        .section        .rodata
+.LC0:
+        .string "%d, %ld\n"
+        .text
+        .globl  main
+        .type   main, @function
+main:
+.LFB0:
+        .cfi_startproc
+        leal    4(%esp), %ecx
+        .cfi_def_cfa 1, 0
+        andl    $-16, %esp
+        pushl   -4(%ecx)
+        pushl   %ebp
+        .cfi_escape 0x10,0x5,0x2,0x75,0
+        movl    %esp, %ebp
+        pushl   %ecx
+        .cfi_escape 0xf,0x3,0x75,0x7c,0x6
+        subl    $20, %esp
+        movl    %gs:20, %eax
+        movl    %eax, -12(%ebp)
+        xorl    %eax, %eax
+        movl    $4, -24(%ebp)
+        movl    $8, -20(%ebp)
+        movl    -16(%ebp), %eax
+        subl    $4, %esp
+        pushl   %eax
+        pushl   $0
+        pushl   $.LC0
+        call    printf
+        addl    $16, %esp
+        movl    $0, %eax
+        movl    -12(%ebp), %edx
+        xorl    %gs:20, %edx
+        je      .L3
+        call    __stack_chk_fail
+.L3:
+        movl    -4(%ebp), %ecx
+        .cfi_def_cfa 1, 0
+        leave
+        .cfi_restore 5
+        leal    -4(%ecx), %esp
+        .cfi_def_cfa 4, 4
+        ret
+        .cfi_endproc
+.LFE0:
+        .size   main, .-main
+        .ident  "GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.5) 5.4.0 20160609"
+        .section        .note.GNU-stack,"",@progbits
+```
+请回答下面三个问题：
+- a) sizeof(a)的值是多少，请说明理由。
+- b) 请画出main函数的活动记录布局，结合活动记录布局，指出 a[0][0]的值是多少。
+- c) 上述汇编代码中的`.cfi_*` 是[Dwarf](http://www.logix.cz/michal/devel/gas-cfi/dwarf-2.0.0.pdf)的Call frame information相关的调试信息。请说明上述汇编码中这些调试信息的含义。
+
+自己出2个题目并给出解答(需要用简短的程序体现你的题目，需要指出题目考核的知识点，2个题目在知>识点上要有区分度)
+
+**提交说明**：
+本次作业提交到git库的 `HW/H10` 目录下，该目录下至少包含以下内容
+
+- `answer.md`
+
+  存放题目与解答（需要在其中说明你所使用的机器配置、操作系统及版本、编译器及版本
+、使用的编译选项，test目录下的内容说明，以及对于各个题目及解答）
+
+- `test/`
+
+  存放关联的 C 源程序、汇编程序、用于快速编译和产生汇编/可执行程序的脚本等等
+
