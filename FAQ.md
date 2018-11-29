@@ -15,7 +15,7 @@
   - <a href="#6new">`new`</a>
 
  <a id="1"/>
- 
+
 ## 1. ssh/git相关
 
 1.1 服务器是否外网ip可以访问?
@@ -49,7 +49,7 @@ ssh-add path/to/your/id_rsa
 
 ``` bash
 git@202.38.79.111's password:
-``` 
+```
 
 > 这个提示是让你填写我们服务器上的git用户的密码.说明你的公私钥的登录方式发生了错误,一般情况下是你的私钥没有配置正确.(极少数情况下是老师的公钥没配置正确).配置方式参照前两个问题.
 
@@ -105,7 +105,7 @@ git@202.38.79.111's password:
 
  <a id="2new"/>
 
-### new [11.3 updated.]
+### ~~new~~ [11.3 updated.]
 
 2.11 作业19题 `F->F*|a|b` 的*是一个符号还是闭包?
 > 就是终结符 *,还没到语义的层次.
@@ -250,9 +250,10 @@ Date:   Mon Sep 24 13:49:09 2018 +0800
 
  <a id="3new"/>
 
-### new [11.3 updated.]
+### ~~new~~ [11.3 updated.]
 
 3.37 LL(*)论文里面的predicate到底是什么东西?
+
 > 翻译成语义断言（semantic predicate)）.两种断言都是用于产生式预测的，断言都是用host language实现的.
 
 3.38 话说LL regular是什么呀?
@@ -337,6 +338,150 @@ if (auto stmt = dynamic_cast<C1Parser::StmtContext *>(subtree)){}
 3.55 可是对于智能指针,向下转换时用dynamic_cast编译不能通过啊?
 > 用`dynamic_pointer_cast`
 
+### new [11.29 updated]
+
+3.56 lab1-3刚开始做还没补全代码时是否可以完成编译？
+
+> 可以，不过要确保源文件是最新版本的。部分同学因为syntax-tree-build.cpp不是最新的而导致项目不能编译。后续需要改进源码发布流程。
+
+3.57 adaptivePredict调用execDFA，那需要分析execDFA这个函数吗？
+
+> 简单分析即可。
+
+3.58 visitExp的初始代码也是不全的吧？
+
+> 是的，同学们需要自己补全。
+
+3.59 lab1-3的第二题是要分析运行时代码的具体情况还是概述antlr面对的各种错误和恢复策略？
+
+> 概述即可。
+
+3.60 对于未标明长度的数组，antlr会自动根据初始化信息补充用作表明长度的exp？
+
+> 文法中数组长度表达式是可选的，但是lab1-3的实验软件包中syntax_tree_serializer.cpp会根据初始化列表的长度输出数组长度，即便源文件中是缺省的。
+
+3.61 可以为了判断使用了哪个产生式加标签（导致要修改 syntax_tree_builder.h）吗
+
+> 不可以
+
+3.62 话说c1r_ref_* 和CMakelists.txt可以更新助教的修改吧？
+
+> 不可以
+
+3.63 浮点数输出结果和 c1r_ref 不一致，需要处理吗?
+
+> 这一步对于浮点数的精读,用stof和stod都算对.检查的时候diff的结果我们会check一下
+
+3.64 如何查找方法定义
+
+> 推荐vscode，配置intellisense。使用定义查找前需要先构建项目。
+
+3.65 部分同学编译项目后，会出现部分成员方法找不到定义的问题
+
+> 之前lab1-2/lab1-1实现的词法文件、语法文件与项目源码不兼容，检查词法文件和语法文件
+
+3.66 为什么constdef，vardef，decl，funcdef的context类型不能转换成bool类型，而constdecl，verdel及其他都可以啊，不能转换的话可以通过什么别的方式判断吗？
+
+> 问题在于对各头文件中的结构定义没有理清就开始写代码，其中有些是指针，有些是容器对象，指针作为标量是可以存在于if语句的条件表达式中的，而容器对象不是标量。
+
+3.67 如果vardecl用var_def_stmt_syntax结构实现的话，vardecl下的vardef怎么办？
+
+> 用的vector实现的vardecl，然后vardef用var_def_stmt_syntax构造vector中的每一个元素
+
+3.68 对于std::any类型的使用问题
+
+> 参见https://en.cppreference.com/w/cpp/utility/any
+
+3.69 运行lab1-3参考程序出现“libantlr4-runtime.so.4.7.1: cannot open shared object file: No such file or directory”
+
+> 临时修改环境变量LD_LIBRARY_PATH，将缺失的动态库路径添加到该环境变量中
+
+3.70 C1Parser.h里，如果StmtContext里同时出现了StmtContext* stmt(size_t i) std::vector<StmtContext*> stmt()会不会出问题
+
+> 不会，两个方法的签名不一样
+
+3.71 llvm ir里面的phi应该怎么理解呢?
+
+> https://llvm.org/docs/LangRef.html#phi-instruction ，另外课堂上在静态单赋值一节会具体介绍phi的作用
+
+3.72 这次实验的仓库里是不是不能包括c1r_ref文件，Libs_for_c1r_ref之类的内容
+
+> 不包括
+
+3.73 lab2-1不用写实验报告吗
+
+> 不用，lab2-1写出源程序结构和IR代码之间的映射关系，这对开展lab2-2是一个有意义的事先梳理。写文档不是为了写给助教或老师看的
+
+3.74 2-1交cmakelists行不行
+
+> 可以，文档已说明
+
+3.75 使用虚拟机编译llvm出现问题
+
+> 可以考虑虚拟机资源不够的问题，为虚拟机分配更多的资源后重新尝试编译
+
+3.76 要求自动生成的ll和自己写的ll完全一致吗….BB顺序不一样可以吗
+
+> 可以
+
+3.77 lab2-1没有文档要求，那可以把文档push到仓库里吗？
+
+> 可以
+
+3.78 lab2-1要给代码加注释吗？
+
+> 适当的充分的注释
+
+3.79 assembly_builder.h的内容可以修改吗
+
+> 不可以
+
+3.80 没有visit expr_syntax函数，难道要为每个含expr_syntax成员的结构都单独处理吗？
+
+> 仔细阅读syntax_tree.h中各类型的定义
+
+3.81 取模运算要求两边都是int吧？
+
+> 参考c
+
+3.81 lab2-2是不是要判断有没有缺main函数
+
+> 要，目前C1不支持跨文件链接
+
+3.82 计算常量表达式的时候，如果除数为零应该怎么处理？mod的时候，如果有运算数是浮点数，又要怎么处理？
+
+> 参考程序没有实现全部的语义检查，那你可以自行添加合理的语义检查并报错。最终的检查不是比较输出的llvm IR文件，而是比较ll文件编译后的可执行文件输出是否正确。
+
+3.82 初始化数组的时候如果超过数组的大小是否要报错？比如int a[1]={1,2}这种，gcc会报warning，然后会忽略多余的初始化数
+
+> **无论对于何种声明，当出现数组声明时，你都需要检查数组长度是否不小于初始化列表长度；若小于，则应通过`err.error`报错。**
+>
+> 此处报错的原因是 clang 和 gcc 的行为是忽视超出部分并报 warning，简化要求起见，报错即可。
+
+3.83 上一个实验说不会考虑int a[]={1,2,3,..}这种情形，这个实验lab2-2要考虑吗？
+
+> 不考虑
+
+3.84 处理左值时如果const_expected为真时报错，那作为右值给数组赋初值时呢？下面的那个例子(比如const int m = 1; int a[m] = {m}; 后面两个m都当做是非法的)。第二个m是作为右值的，要报错吗？（c1ref和gcc编译似乎是不会报错的）  
+
+> 的确是右值，但是这里是全局变量声明，实验规定全局变量的初始化必须使用常量表达式。文档中有相关解释，请仔细阅读文档
+
+3.85 话说在cond里面，遇到float和int比较，要把int转换成float吗
+
+> 要转换
+
+3.86 builder.createSItoFP已经执行了，但是在输出的lr代码里面没看见
+
+> IR的创建需要遵顼SSA格式，输入和输出Value不要用同一个变量
+
+3.87 用a[1.2]这种作死的表达式也会出现段错误哎 是不是这里也应该要判断一下
+
+> 要判断
+
+3.88 Value* 怎么提取它里面的值？需要用来和数组的初始值数量比较
+
+> 如果一个是constexpr_expected的话，他的值应该存储到int_const_result或float_const_result，Value的值是抽象的，你不应该去提取它实际的值
+
 <a id="4"/>
 
 ## 4. 其他系统/平台/环境等相关 
@@ -389,7 +534,7 @@ if (auto stmt = dynamic_cast<C1Parser::StmtContext *>(subtree)){}
 
  <a id="5new"/>
 
-### new [11.3 updated.]
+### ~~new~~ [11.3 updated.]
 
 5.6 请问习题课的ppt在哪里捏?ppt有错误咩??
 > [老师主页](http://staff.ustc.edu.cn/~yuzhang/compiler/index.html)的schedule一栏上.具体链接为:
@@ -459,7 +604,7 @@ if (auto stmt = dynamic_cast<C1Parser::StmtContext *>(subtree)){}
 
  <a id="6new"/>
 
-### new [11.3 updated.]
+### ~~new~~ [11.3 updated.]
 6.2.2 Lab1-3
 ``` text
 
