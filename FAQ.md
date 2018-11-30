@@ -5,14 +5,11 @@
 
 - <a href="#1">`1. ssh/git相关`</a>
 - <a href="#2">`2. HW相关`</a>
-  - <a href="#2new">`new`</a>
 - <a href="#3">`3. Lab相关`</a>
-  - <a href="#3new">`new-尤其是Lab1-3相关的信息`</a>
+  - <a href="#3new">`new`</a>
 - <a href="#4">`4. 其他系统/平台/环境等相关`</a>
 - <a href="#5">`5. 课程资源`</a>
-  - <a href="#5new">`new`</a>
 - <a href="#6">`6. 目录结构`</a>
-  - <a href="#6new">`new`</a>
 
  <a id="1"/>
 
@@ -248,7 +245,6 @@ Date:   Mon Sep 24 13:49:09 2018 +0800
 > lqx同学:[Markdown中插入数学公式的方法]
 (https://blog.csdn.net/xiahouzuoxin/article/details/26478179)
 
- <a id="3new"/>
 
 ### ~~new~~ [11.3 updated.]
 
@@ -337,6 +333,8 @@ if (auto stmt = dynamic_cast<C1Parser::StmtContext *>(subtree)){}
 
 3.55 可是对于智能指针,向下转换时用dynamic_cast编译不能通过啊?
 > 用`dynamic_pointer_cast`
+
+ <a id="3new"/>
 
 ### new [11.29 updated]
 
