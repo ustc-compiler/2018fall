@@ -1,0 +1,15 @@
+
+void main() {
+    int v1;
+    int v2, v3, v4, v5;
+    int v6 = 3;
+    int v7, v8 = 900913, v9 = 0x123456;
+
+    const int c1 = 3;
+    const int c2 = 1, c3 = 0x123456;
+
+    int a1[2];
+    int a2[2] = {1, 2};
+    int a3[3] = {1, 2}, a4[3] = {1, 3};
+    const int ca1[2] = {1, 2}, ca2[7] = {1, 2, 3, 1, 3, 2};
+}

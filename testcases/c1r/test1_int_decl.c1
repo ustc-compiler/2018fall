@@ -1,0 +1,5 @@
+int v1;
+int v2, v3, v4, v5;
+int v6 = 3;
+int v7, v8 = 0, v9 = 0x123456;
+

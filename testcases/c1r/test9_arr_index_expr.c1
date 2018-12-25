@@ -1,0 +1,8 @@
+
+void main() {
+    int x;
+    // array index
+    int a[1] = {2};
+    x = a[0];
+    x = 1 + a[0];
+}

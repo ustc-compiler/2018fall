@@ -1,0 +1,9 @@
+
+void main() {
+    int i = 0, j = 1;
+
+    // if-else if-else
+    if (i == 10) i = 20;
+    else if (i > 10) i = i * 2;
+    else i = 19;
+}

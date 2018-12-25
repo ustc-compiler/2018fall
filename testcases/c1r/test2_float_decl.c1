@@ -1,0 +1,5 @@
+float v1;
+float v2, v3, v4, v5;
+float v6 = 1.0;
+float v7, v8 = 2., v9 = .3;
+

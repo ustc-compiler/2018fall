@@ -1,0 +1,11 @@
+
+void main() {
+    int x;
+    // lval
+    x = 1;
+    // simple
+    x = 2 + 3;
+    x = 4 - 5;
+    x = 6 * 7;
+    x = 8 / 9;
+}

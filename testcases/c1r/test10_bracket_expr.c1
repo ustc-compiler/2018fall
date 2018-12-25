@@ -1,0 +1,6 @@
+
+void main() {
+    int x;
+    // brackets
+    x = x + (x + 2);
+}

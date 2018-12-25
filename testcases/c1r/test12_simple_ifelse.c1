@@ -1,0 +1,13 @@
+
+void main() {
+    int i = 0, j = 1;
+
+    // if-else with block body
+    if (j != 0) {
+        i = j + 1;
+        j = i + 1;
+    } else {
+        j = i + 1;
+        i = i + 1;
+    }
+}
